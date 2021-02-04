@@ -16,7 +16,16 @@ module.exports.handleBeerGetOne = async (req, res) => {
 };
 
 module.exports.handleBeerPost = async (req, res) => {
-  const { name, brand, country, price, type, description, advice } = req.body;
+  const {
+    name,
+    brand,
+    country,
+    price,
+    type,
+    description,
+    advice,
+    image_url,
+  } = req.body;
   const data = await postOneBeer({
     name,
     brand,
@@ -25,12 +34,22 @@ module.exports.handleBeerPost = async (req, res) => {
     type,
     description,
     advice,
+    image_url,
   });
   return res.status(201).send(data);
 };
 
 module.exports.handleBeerPutOne = async (req, res) => {
-  const { name, brand, country, price, type, description, advice } = req.body;
+  const {
+    name,
+    brand,
+    country,
+    price,
+    type,
+    description,
+    advice,
+    image_url,
+  } = req.body;
   const attribute = {
     name,
     brand,
@@ -39,6 +58,7 @@ module.exports.handleBeerPutOne = async (req, res) => {
     type,
     description,
     advice,
+    image_url,
   };
   const data = await putOneBeer(req.params.id, attribute);
   res.send(data);
